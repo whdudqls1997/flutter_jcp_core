@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 extension JcpBuildContext on BuildContext {
   /// Get size of [context].<br>
   /// Throws [Exception] if ancestor is unavailable.
-  Size get size => MediaQuery.sizeOf(this);
+  Size get quickSize => MediaQuery.sizeOf(this);
 
   /// Get size of [context].<br>
   /// Returns [Null] if not size-able.
