@@ -36,3 +36,14 @@ Future<T> commonAsync<T>({
   // return future's result
   return result;
 }
+
+/// Parse given [dynamic] [value] into wanted [Type] [T].<br>
+/// Will return [defaultValue] of [T] if error occurs.
+T parseDynamic<T>(dynamic value, T defaultValue) {
+  if (value == null) return defaultValue;
+  if (T == int) return (int.tryParse(value.toString()) ?? defaultValue) as T;
+  if (T == double) return (double.tryParse(value.toString()) ?? defaultValue) as T;
+  if (T == String) return (value.toString()) as T;
+  if (T == DateTime) return (DateTime.tryParse(value.toString()) ?? defaultValue) as T;
+  return defaultValue;
+}
