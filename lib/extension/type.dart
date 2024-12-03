@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:flutter/widgets.dart';
+
 extension JcpDynamic on dynamic {
   /// Returns this [Object] if its type is [T].<br>
   /// Throws [Exception] otherwise.
@@ -52,6 +54,19 @@ extension JcpString on String {
           ),
         ),
       );
+
+  /// Get size of this [String] when drawn into [Text] widget with given [style]
+  Size textWidgetSize(TextStyle style) {
+    final TextPainter textPainter = TextPainter(
+      text: TextSpan(text: this, style: style),
+      maxLines: 1,
+      textDirection: TextDirection.ltr,
+    )..layout(
+        minWidth: 0,
+        maxWidth: double.infinity,
+      );
+    return textPainter.size;
+  }
 
   /// Parse this [String] to [int].<br>
   /// Throws [Exception] if not parse-able.
